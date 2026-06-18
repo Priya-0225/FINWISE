@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Budget Planner</title>
+    <link rel="stylesheet" href="planner-new.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Budget Planner</h2>
+
+    <p>Enter your monthly income:</p>
+    <input type="number" id="income" placeholder="Enter income">
+
+    <br><br>
+    <button onclick="generatePlan()">Generate Plan</button>
+
+    <div class="section">
+        <h3>Recommended Allocation</h3>
+        <!-- ONLY ONE plan div -->
+        <div id="plan"></div>
+    </div>
+
+    <button onclick="goHome()">Back to Home</button>
+
+</div>
+
+<script src="planner.js"></script>
+
+</body>
+</html>

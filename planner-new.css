@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 600px; 
+    text-align: center;
+}
+
+#plan {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.plan-box {
+    flex: 1;
+    padding: 20px;
+    background: #222;
+    color: white;
+    border-radius: 10px;
+}

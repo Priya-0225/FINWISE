@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FINWISE Result</title>
+<link rel="stylesheet" href="result.css">
+</head>
+
+<body>
+<div class="logout-icon" onclick="logout()">
+    <i class="fas fa-sign-out-alt"></i>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<div id="loader">
+    <div class="spinner"></div>
+</div>
+
+<div id="mainContent" style="display:none;">
+
+<div class="container">
+
+    <h2 class="title">YOUR FINANCIAL DASHBOARD</h2>
+
+    <div class="card top-card">
+        <h1 id="score"></h1>
+        <div id="profile" class="profile-box"></div>
+        <p id="summary"></p>
+    </div>
+
+    <div class="card">
+        <h3>Progress</h3>
+        <div id="progressBar"></div>
+        <p id="progressText"></p>
+    </div>
+
+    <div class="grid">
+
+        <div class="card small">
+            <h4>📊 Insights</h4>
+            <p id="insights"></p>
+        </div>
+
+        <div class="card small highlight">
+            <h4>🚀 Next Step</h4>
+            <p id="nextStep"></p>
+        </div>
+
+    </div>
+
+    <div id="goalMessageBox" style="display:none; margin-top:15px;">
+        <div id="goalMessage" style="color:#00ff9d; font-weight:bold;"></div>
+
+        <button onclick="clearGoalMsg()" style="
+            margin-top:10px;
+            padding:5px 10px;
+            background:#00ff9d;
+            border:none;
+            color:#000;
+            border-radius:6px;
+            cursor:pointer;
+        ">OK</button>
+    </div>
+
+    <div class="card budget-card">
+
+    <div class="flip-card" id="flipCard">
+
+        <div class="flip-front" onclick="flipCard()">
+            🔒 Budget Insight Locked
+
+            <span>Tap to unlock your personalized plan</span>
+        </div>
+
+        <div class="flip-back">
+
+            <h3>💰 Your Budget Plan</h3>
+
+            <input type="number" id="income" placeholder="Enter monthly income">
+
+            <button onclick="calculateBudget()">Generate Plan</button>
+
+            <div id="budgetResult"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="actions">
+    <button onclick="goHome()">Home</button>
+    <button onclick="window.location.href='goal.html'">Goal Tracker</button>
+    <button onclick="goToPurchase()">Purchase Advisor</button>
+</div>
+
+</div> 
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+<script src="firebase.js"></script>
+<script src="result.js"></script>
+
+</body>
+</html>

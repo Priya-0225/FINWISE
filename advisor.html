@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FinWise | Smart Purchase Advisor</title>
+    <link rel="stylesheet" href="advisor.css">
+</head>
+
+<body>
+
+<div class="glass-container">
+
+    <div class="header-section">
+        <div class="ai-icon">🧠</div>
+        <h2>Purchase Advisor</h2>
+        <p>Analyze your next big investment</p>
+    </div>
+
+    <div class="form-group">
+        <label>Product Name</label>
+        <input type="text" id="product" placeholder="e.g. iPhone">
+    </div>
+
+    <div class="form-group">
+        <label>Price (Optional)</label>
+        <input type="number" id="price" placeholder="Auto-fetched if available">
+    </div>
+
+    <div class="form-group">
+        <label>Shopping Platform</label>
+        <select id="platform">
+            <option value="" disabled selected>Select Store</option>
+            <option value="Amazon">Amazon</option>
+            <option value="Flipkart">Flipkart</option>
+            <option value="Reliance Digital">Reliance Digital</option>
+            <option value="Local Store">Local Store</option>
+        </select>
+    </div>
+
+    <button class="analyze-btn" onclick="analyze()">Analyze Purchase →</button>
+
+</div>
+
+<script src="advisor.js"></script>
+</body>
+</html>

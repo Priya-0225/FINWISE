@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #050505;
+    color: #fff;
+    margin: 0;
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.title {
+    text-align: center;
+    color: #00ffcc;
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.card {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+
+    padding: 20px;
+    border-radius: 16px;
+    margin-top: 20px;
+
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+}
+
+#score {
+    font-size: 48px;
+    color: #00ffcc;
+    font-weight: 800;
+}
+
+.profile-box {
+    padding: 6px 14px;
+    border-radius: 20px;
+    display: inline-block;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.grid {
+    display: flex;
+    gap: 15px;
+}
+
+.small {
+    flex: 1;
+}
+
+.highlight {
+    background: rgba(0,255,150,0.08);
+    border-left: 4px solid #00ff9d;
+}
+
+.card h4 {
+    color: #00ffcc;
+}
+
+#progressBar {
+    height: 12px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.actions button {
+    margin: 10px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+
+    background: #00ff9d;
+    color: #ffffff;   
+
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.actions button:hover {
+    box-shadow: 0 0 20px rgba(0,255,157,0.4);
+    transform: scale(1.05);
+}
+
+.budget-card {
+    margin-top: 20px;
+}
+
+.flip-card {
+    perspective: 1000px;
+    height: 260px;
+
+    position: relative;
+    overflow: hidden;  
+
+    border-radius: 16px;
+}
+
+.flip-front,
+.flip-back {
+    position: absolute;
+    inset: 0;   
+
+    border-radius: 16px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    backface-visibility: hidden;
+    transition: 0.6s ease;
+}
+.flip-back {
+    padding: 15px;
+    box-sizing: border-box; 
+}
+.flip-back * {
+    max-width: 100%;
+}
+
+.flip-front {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    border: 1px solid rgba(0,255,157,0.3);
+
+    color: #00ff9d;
+    font-size: 22px;
+    font-weight: 700;
+    text-align: center;
+    gap: 10px;
+
+    cursor: pointer;
+
+    box-shadow: 0 0 20px rgba(0,255,157,0.2);
+}
+
+.flip-front:hover {
+    box-shadow: 0 0 30px rgba(0,255,157,0.5);
+    transform: scale(1.02);
+}
+
+.flip-front span {
+    font-size: 13px;
+    color: #ccc;
+    font-weight: 400;
+}
+
+.flip-back {
+    transform: rotateY(180deg);
+    background: #111;
+    padding: 20px;
+    gap: 10px;
+}
+
+.flipped .flip-front {
+    transform: rotateY(180deg);
+}
+
+.flipped .flip-back {
+    transform: rotateY(0deg);
+}
+
+.flip-back input {
+    width: 80%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background: #1a1a1a;
+    color: #fff;
+}
+
+.flip-back button {
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: none;
+    background: #00ff9d;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.bar {
+    width: 100%;
+    height: 10px;
+    background: #222;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+.bar div {
+    height: 100%;
+    background: linear-gradient(90deg, #00ff9d, #00c2ff);
+    border-radius: 10px;
+    transition: 0.6s ease;
+}
+
+.advice {
+    margin-top: 10px;
+    color: #00ff9d;
+    font-size: 14px;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .grid {
+        flex-direction: column;
+    }
+
+    .container {
+        width: 90%;
+    }
+}
+
+#loader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #222;
+    border-top: 5px solid #00ff9d;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+.logout-icon {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+
+    width: 42px;
+    height: 42px;
+
+    background: #00ff9d;
+    color: #000;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    font-size: 18px;
+
+    box-shadow: 0 0 15px rgba(0,255,157,0.4);
+
+    z-index: 9999;
+}
+
+.logout-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(0,255,157,0.7);
+}
+#budgetResult {
+    margin-top: 10px;
+    font-size: 15px;
+    color: #00ffcc;
+    line-height: 1.6;
+}

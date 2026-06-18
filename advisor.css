@@ -1,0 +1,134 @@
+:root {
+    --neon: #00ff9d;
+    --bg: #000000;
+    --card: #0b0b0b;
+    --border: rgba(255,255,255,0.08);
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+
+    background: #000;   
+    color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.glass-container {
+    width: 420px;
+
+    background: rgba(255,255,255,0.08); 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(255,255,255,0.15); 
+
+    border-radius: 15px; 
+    padding: 30px;
+
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.5); 
+
+    animation: fadeIn 0.8s ease;
+}
+
+
+.header-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.ai-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+
+h2 {
+    margin: 0;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: var(--neon);
+    text-shadow: 0 0 10px rgba(0,255,157,0.2);
+}
+
+
+p {
+    color: #aaa;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+
+label {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    color: var(--neon);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+
+input, select {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 14px;
+    border-radius: 12px;
+
+    background: #111;
+    border: 1px solid var(--border);
+
+    color: white;
+    font-size: 15px;
+
+    transition: 0.3s ease;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--neon);
+    box-shadow: 0 0 12px rgba(0,255,157,0.15);
+}
+
+
+select option {
+    background: #111;
+    color: white;
+}
+
+
+.analyze-btn {
+    width: 100%;
+    padding: 14px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: var(--neon);
+    color: #000;
+
+    font-weight: 700;
+    font-size: 15px;
+
+    cursor: pointer;
+    transition: 0.3s ease;
+
+    box-shadow: 0 0 15px rgba(0,255,157,0.3);
+}
+
+.analyze-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px rgba(0,255,157,0.6);
+}

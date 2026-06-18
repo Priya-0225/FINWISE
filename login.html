@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+.login-title {
+    font-size: 32px;
+    color: #00ff9d;
+    text-align: center;
+    margin-bottom: 20px;
+
+    text-shadow: 0 0 10px rgba(0,255,157,0.7),
+                 0 0 20px rgba(0,255,157,0.4);
+}
+
+.auth-link a {
+    color: #00ff9d;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.auth-link a:hover {
+    text-shadow: 0 0 10px #00ff9d;
+}
+</style>
+
+</head>
+
+<body>
+<div class="container">
+
+<h2 class="login-title">Login</h2>
+
+<input type="text" id="email" placeholder="Enter Email">
+<input type="password" id="password" placeholder="Enter Password">
+
+<button type="button" onclick="login()">Login</button>
+
+<p id="msg"></p>
+
+<p class="auth-link">
+New user? <a href="signup.html">Signup</a>
+</p>
+
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+<script src="firebase.js"></script>
+<script src="login.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FINWISE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>FINWISE</h1>
+    <h2>AN INTELLIGENT DECISION SUPPORT SYSTEM FOR PERSONAL FINANCE PLANNING</h2>
+
+    <p>
+    FinWise is a financial literacy web application designed to help individuals 
+    evaluate their financial habits and receive structured guidance for better financial decision-making.
+    </p>
+
+    <h3 id="welcomeUser"></h3>
+
+    <h3 class="wisdom-title">Today's Financial Wisdom</h3>
+    <p id="quote">"An investment in knowledge pays the best interest."</p>
+
+    
+
+    <div class="button-group">
+
+    <button onclick="startAssessment()">Financial Assessment</button>
+
+    <button onclick="window.location.href='goal.html'">
+    Goal Tracker
+    </button>
+
+    <button onclick="goToPurchase()">Purchase Advisor</button>
+    </div>
+
+</div>
+
+<div class="logout-icon" onclick="logout()">
+    <i class="fas fa-sign-out-alt"></i>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+<script src="firebase.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
