@@ -33,7 +33,7 @@ function signup() {
         localStorage.setItem("user_name", name);
         localStorage.setItem("currentUser", auth.currentUser.uid);
 
-        window.location.href = "index.html";
+        window.location.href = "dashboard.html";
 
     })
     .catch((err) => {
