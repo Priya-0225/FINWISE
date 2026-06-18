@@ -25,7 +25,7 @@ function login() {
             console.log("No name found, continuing...");
         });
 
-        window.location.href = "index.html";
+        window.location.href = "dashboard.html";
 
     })
     .catch((err) => {
