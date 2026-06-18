@@ -7,37 +7,25 @@ if (cachedName) {
 
 auth.onAuthStateChanged(user => {
 
-    if (user) {
-
-        db.collection("users").doc(user.uid).get()
-        .then(doc => {
-
-            if (doc.exists) {
-
-                let name = doc.data().name || "User";  
-
-                document.getElementById("welcomeUser").innerText =
-                    "Welcome back, " + name + " 👋";
-
-         
-                localStorage.setItem("user_name", name);
-            } 
-            else {
-                document.getElementById("welcomeUser").innerText =
-                    "Welcome back, User 👋";
-            }
-
-        })
-        .catch(err => {
-            console.error(err);
-            document.getElementById("welcomeUser").innerText =
-                "Welcome back, User 👋";
-        });
-
-    } 
-    else {
+    if (!user) {
         window.location.href = "login.html";
+        return;
     }
+
+    db.collection("users").doc(user.uid).get()
+    .then(doc => {
+
+        if (doc.exists) {
+
+            let name = doc.data().name;
+
+            document.getElementById("welcomeUser").innerText =
+                "Welcome back, " + name + " 👋";
+
+            localStorage.setItem("user_name", name);
+        }
+    });
+
 });
 
 const quotes = [
@@ -50,8 +38,7 @@ const quotes = [
 
 function showQuote() {
     let randomIndex = Math.floor(Math.random() * quotes.length);
-    document.getElementById("quote").innerText =
-        "💡 " + quotes[randomIndex];
+    document.getElementById("quote").innerText = "💡 " + quotes[randomIndex];
 }
 
 showQuote();
@@ -72,7 +59,7 @@ function logout() {
 
     auth.signOut().then(() => {
 
-        localStorage.clear(); 
+        localStorage.clear();
 
         window.location.href = "login.html";
     });
