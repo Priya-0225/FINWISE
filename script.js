@@ -7,25 +7,30 @@ if (cachedName) {
 
 auth.onAuthStateChanged(user => {
 
-    if (!user) {
-        window.location.href = "login.html";
-        return;
-    }
+    if (user) {
 
-    db.collection("users").doc(user.uid).get()
-    .then(doc => {
+        db.collection("users").doc(user.uid).get()
+        .then(doc => {
 
-        if (doc.exists) {
+            if (doc.exists) {
 
-            let name = doc.data().name;
+                let name = doc.data().name;
 
-            document.getElementById("welcomeUser").innerText =
-                "Welcome back, " + name + " 👋";
+                document.getElementById("welcomeUser").innerText =
+                    "Welcome back, " + name + " 👋";
 
-            localStorage.setItem("user_name", name);
+                localStorage.setItem("user_name", name);
+            }
+        });
+
+    } else {
+
+        let cached = localStorage.getItem("user_name");
+
+        if (!cached) {
+            window.location.href = "login.html";
         }
-    });
-
+    }
 });
 
 const quotes = [
@@ -56,9 +61,7 @@ function goToPurchase() {
 }
 
 function logout() {
-
     auth.signOut().then(() => {
-
         localStorage.clear();
         window.location.href = "login.html";
     });
