@@ -8,6 +8,29 @@ window.analyze = async function () {
         return;
     }
 
+    const apiKey = "YOUR_API_KEY";
+
+    if (apiKey === "YOUR_API_KEY") {
+
+        let manual = prompt("API key not configured.\n\nEnter estimated price manually:");
+
+        if (!manual) return;
+
+        let price = parseInt(manual);
+
+        if (isNaN(price)) {
+            alert("Invalid price");
+            return;
+        }
+
+        localStorage.setItem("p_product", product);
+        localStorage.setItem("p_price", price);
+        localStorage.setItem("p_platform", platform);
+
+        window.location.href = "advisor-result.html";
+        return;
+    }
+
     try {
 
         const url = `https://real-time-product-search.p.rapidapi.com/search?q=${encodeURIComponent(product)}&country=in&language=en`;
@@ -15,7 +38,7 @@ window.analyze = async function () {
         const options = {
             method: 'GET',
             headers: {
-                'X-RapidAPI-Key': 'YOUR_API_KEY',
+                'X-RapidAPI-Key': apiKey,
                 'X-RapidAPI-Host': 'real-time-product-search.p.rapidapi.com'
             }
         };
@@ -24,15 +47,10 @@ window.analyze = async function () {
         const data = await res.json();
 
         if (!data.data || !data.data.products) {
-            alert("No product found");
-            return;
+            throw new Error("No data");
         }
 
-        let minPrice = 1000;
-
-        if (product.toLowerCase().includes("iphone")) {
-            minPrice = 50000;
-        }
+        let minPrice = product.toLowerCase().includes("iphone") ? 50000 : 1000;
 
         let validProducts = data.data.products.filter(item => {
 
@@ -46,15 +64,10 @@ window.analyze = async function () {
 
             let price = parseInt(priceText.toString().replace(/[₹,]/g, ""));
 
-            if (isNaN(price)) return false;
-
-            return price > minPrice;
+            return !isNaN(price) && price > minPrice;
         });
 
-        if (validProducts.length === 0) {
-            alert("No reliable product data found");
-            return;
-        }
+        if (validProducts.length === 0) throw new Error("No valid products");
 
         let item = validProducts[0];
 
@@ -74,7 +87,22 @@ window.analyze = async function () {
         window.location.href = "advisor-result.html";
 
     } catch (err) {
-        console.error(err);
-        alert("Error fetching product");
+
+        let manual = prompt("Could not fetch reliable data.\n\nEnter estimated price manually:");
+
+        if (!manual) return;
+
+        let price = parseInt(manual);
+
+        if (isNaN(price)) {
+            alert("Invalid price");
+            return;
+        }
+
+        localStorage.setItem("p_product", product);
+        localStorage.setItem("p_price", price);
+        localStorage.setItem("p_platform", platform);
+
+        window.location.href = "advisor-result.html";
     }
 };
