@@ -2,17 +2,13 @@ window.onload = function () {
 
 let product  = localStorage.getItem("p_product");
 let rawPrice = localStorage.getItem("p_price");
-console.log("Stored price:", rawPrice);
-
 let price = parseFloat(rawPrice);
-console.log("Parsed price:", price);
 let platform = localStorage.getItem("p_platform");
 
 if (!product || !price) {
     product = "Sample Product";
     price = 50000;
 }
-
 
 function random(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -23,14 +19,13 @@ let flipkart = price - random(200, 1500);
 let reliance = price - random(300, 1200);
 let local    = price - random(500, 1800);
 
-
 amazon = Math.max(amazon, 100);
 flipkart = Math.max(flipkart, 100);
 reliance = Math.max(reliance, 100);
 local = Math.max(local, 100);
 
-
 let bestPrice = Math.min(amazon, flipkart, reliance, local);
+
 let bestStore =
     bestPrice === amazon ? "Amazon" :
     bestPrice === flipkart ? "Flipkart" :
@@ -43,7 +38,6 @@ let emi = Math.round(bestPrice / 12);
 function fmt(n) {
     return "₹" + n.toLocaleString("en-IN");
 }
-
 
 let output = `<div class="main-card">`;
 
@@ -100,3 +94,9 @@ output += `</div>`;
 
 document.getElementById("result").innerHTML = output;
 };
+
+
+// ✅ FIXED NAVIGATION
+function goHome() {
+    window.location.href = "dashboard.html";
+}
