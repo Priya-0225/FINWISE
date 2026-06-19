@@ -4,20 +4,18 @@ let score = 0;
 let emergencyFund = 0;
 let debt = 0;
 
-let prevScore = null;
-
 auth.onAuthStateChanged(user => {
     if (user) {
+
         currentUser = user.uid;
 
         db.collection("users").doc(user.uid).get()
         .then(doc => {
             if (doc.exists) {
+
                 score = doc.data().score || 0;
                 emergencyFund = doc.data().emergencyFund || 0;
                 debt = doc.data().debt || 0;
-
-                prevScore = parseInt(localStorage.getItem(currentUser + "_score"));
 
                 loadResult();
             }
@@ -29,6 +27,8 @@ function loadResult() {
 
     document.getElementById("loader").style.display = "none";
     document.getElementById("mainContent").style.display = "block";
+
+    let prevScore = parseInt(localStorage.getItem(currentUser + "_score"));
 
     let profile = "";
     let emoji = "";
@@ -51,12 +51,15 @@ function loadResult() {
     }
 
     document.getElementById("score").innerText = score + " / 100";
-    document.getElementById("profile").innerHTML = emoji + " " + profile + " Investor";
+
+    document.getElementById("profile").innerHTML =
+        emoji + profile + " Investor";
+
     document.getElementById("summary").innerText = summaryText;
 
     let progressText = "";
 
-    if (prevScore === null || isNaN(prevScore)) {
+    if (!prevScore && prevScore !== 0) {
         progressText = "This is your first assessment.";
     } 
     else if (score > prevScore) {
@@ -69,8 +72,9 @@ function loadResult() {
         progressText = "No change in score.";
     }
 
-    localStorage.setItem(currentUser + "_score", score);
     document.getElementById("progressText").innerText = progressText;
+
+    localStorage.setItem(currentUser + "_score", score);
 
     let insights = "";
 
