@@ -11,7 +11,7 @@ window.analyze = async function () {
     const loading = document.getElementById("loading");
     loading.style.display = "block";
 
-    const apiKey = "dbb6d4fa0amshc5c0b45e624a6dfp111f3djsnbe961160cb8b";
+    const apiKey = "YOUR_API_KEY";
 
     if (!apiKey || apiKey === "YOUR_API_KEY") {
 
