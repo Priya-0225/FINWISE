@@ -158,7 +158,7 @@ function celebrate() {
 }
 
 function goHome() {
-    window.location.href = "index.html";
+    window.location.href = "dashboard.html";
 }
 
 function logout() {
