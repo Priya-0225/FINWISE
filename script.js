@@ -60,7 +60,6 @@ function logout() {
     auth.signOut().then(() => {
 
         localStorage.clear();
-
         window.location.href = "login.html";
     });
 }
