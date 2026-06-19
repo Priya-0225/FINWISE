@@ -13,7 +13,7 @@ window.analyze = async function () {
 
     const apiKey = "dbb6d4fa0amshc5c0b45e624a6dfp111f3djsnbe961160cb8b";
 
-    if (apiKey === "dbb6d4fa0amshc5c0b45e624a6dfp111f3djsnbe961160cb8b") {
+    if (!apiKey || apiKey === "YOUR_API_KEY") {
 
         let manual = prompt("API key not configured.\n\nEnter estimated price manually:");
 
