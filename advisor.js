@@ -8,18 +8,25 @@ window.analyze = async function () {
         return;
     }
 
+    const loading = document.getElementById("loading");
+    loading.style.display = "block";
+
     const apiKey = "YOUR_API_KEY";
 
     if (apiKey === "YOUR_API_KEY") {
 
         let manual = prompt("API key not configured.\n\nEnter estimated price manually:");
 
-        if (!manual) return;
+        if (!manual) {
+            loading.style.display = "none";
+            return;
+        }
 
         let price = parseInt(manual);
 
         if (isNaN(price)) {
             alert("Invalid price");
+            loading.style.display = "none";
             return;
         }
 
@@ -27,7 +34,10 @@ window.analyze = async function () {
         localStorage.setItem("p_price", price);
         localStorage.setItem("p_platform", platform);
 
-        window.location.href = "advisor-result.html";
+        setTimeout(() => {
+            window.location.href = "advisor-result.html";
+        }, 1500);
+
         return;
     }
 
@@ -84,18 +94,24 @@ window.analyze = async function () {
         localStorage.setItem("p_price", price);
         localStorage.setItem("p_platform", platform);
 
-        window.location.href = "advisor-result.html";
+        setTimeout(() => {
+            window.location.href = "advisor-result.html";
+        }, 1500);
 
     } catch (err) {
 
         let manual = prompt("Could not fetch reliable data.\n\nEnter estimated price manually:");
 
-        if (!manual) return;
+        if (!manual) {
+            loading.style.display = "none";
+            return;
+        }
 
         let price = parseInt(manual);
 
         if (isNaN(price)) {
             alert("Invalid price");
+            loading.style.display = "none";
             return;
         }
 
@@ -103,6 +119,8 @@ window.analyze = async function () {
         localStorage.setItem("p_price", price);
         localStorage.setItem("p_platform", platform);
 
-        window.location.href = "advisor-result.html";
+        setTimeout(() => {
+            window.location.href = "advisor-result.html";
+        }, 1500);
     }
 };
