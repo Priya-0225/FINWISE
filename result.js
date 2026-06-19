@@ -4,16 +4,20 @@ let score = 0;
 let emergencyFund = 0;
 let debt = 0;
 
-let prevScore = parseInt(localStorage.getItem(currentUser + "_score")) || null;
+let prevScore = null;
 
 auth.onAuthStateChanged(user => {
     if (user) {
+        currentUser = user.uid;
+
         db.collection("users").doc(user.uid).get()
         .then(doc => {
             if (doc.exists) {
                 score = doc.data().score || 0;
                 emergencyFund = doc.data().emergencyFund || 0;
                 debt = doc.data().debt || 0;
+
+                prevScore = parseInt(localStorage.getItem(currentUser + "_score"));
 
                 loadResult();
             }
@@ -27,28 +31,32 @@ function loadResult() {
     document.getElementById("mainContent").style.display = "block";
 
     let profile = "";
+    let emoji = "";
     let summaryText = "";
 
     if (score >= 70) {
         profile = "Aggressive";
+        emoji = "🚀";
         summaryText = "Strong financial position. Focus on wealth growth.";
     } 
     else if (score >= 40) {
         profile = "Moderate";
+        emoji = "⚖️";
         summaryText = "Stable but needs improvement.";
     } 
     else {
         profile = "Conservative";
+        emoji = "🛡️";
         summaryText = "Improve financial habits.";
     }
 
     document.getElementById("score").innerText = score + " / 100";
-    document.getElementById("profile").innerText = profile;
+    document.getElementById("profile").innerHTML = emoji + " " + profile + " Investor";
     document.getElementById("summary").innerText = summaryText;
 
     let progressText = "";
 
-    if (prevScore === null) {
+    if (prevScore === null || isNaN(prevScore)) {
         progressText = "This is your first assessment.";
     } 
     else if (score > prevScore) {
@@ -100,7 +108,6 @@ function loadResult() {
 }
 
 function calculateBudget(){
-
     let income = parseFloat(document.getElementById("income").value);
     if(!income) return alert("Enter income");
 
@@ -114,7 +121,7 @@ Wants (Lifestyle): ₹${wants}
 Savings (Future): ₹${savings}`;
 }
 
-function goHome(){ window.location.href="index.html"; }
+function goHome(){ window.location.href="dashboard.html"; }
 function goToPurchase(){ window.location.href="advisor.html"; }
 
 function flipCard(){
